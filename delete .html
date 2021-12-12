@@ -1,0 +1,44 @@
+{% extends "pizzas/base.html" %}
+
+{% block content %}
+
+<p>pizza: {{ pizza }}</p>
+
+<ul>
+    {% for t in toppings %}
+    <li> 
+        <p>{{t.name|linebreaks}}</p>
+        <p>
+            <a href="{% url 'pizzas:edit_topping' t.id %}">Edit topping</a>
+        </p>
+    </li>
+    {% empty %}
+    
+    <li> no toppings for this yet.</li>
+    
+    {% endfor %}
+</ul>
+<p>
+    <a href="{% url 'pizzas:new_topping' pizza.id %}">Add a new topping</a>
+</p>
+<ul>
+
+    {% for comment in comments %}
+    <li>
+        <p> {{ comment.name|linebreaks }}</p>
+    </li>
+    {% empty %}
+
+    <li>No comments for this pizza have been added yet.</li>
+
+    {% endfor %}
+
+    </li>
+
+</ul>
+
+<p>
+    <a href="{% url 'pizzas:new_comment' pizza.id %}">Add a new comment</a>
+</p>
+
+{% endblock content %} 

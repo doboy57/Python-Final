@@ -54,8 +54,7 @@ def new_pizza(request):
 def new_topping(request, pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
     
-    if pizza.owner != request.user:
-        raise Http404
+    
     if request.method != "POST":
         form = ToppingForm()
 

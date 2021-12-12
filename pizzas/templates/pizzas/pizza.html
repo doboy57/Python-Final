@@ -1,20 +1,34 @@
 {% extends "pizzas/base.html" %}
 
+{% block page_header %}
+    <h2>{{ pizza }}</h2>
+{% endblock page_header %}
+
+<body>
+    <div class="container-fluid">
+        <h3>Who Am I?</h3>
+        <img src="bird.jpg" alt="Bird">
+        <h3>I'm an adventurer</h3>
+      </div>
+</body>
 {% block content %}
 
-<p>pizza: {{ pizza }}</p>
+{% block header %}
+    <h4>{{ pizza}} toppings </h4>
+{% endblock header %}
 
-<ul>
+
+    <ul>   
     {% for t in toppings %}
-    <li> 
-        <p>{{t.name|linebreaks}}</p>
-        <p>
-            <a href="{% url 'pizzas:edit_topping' t.id %}">Edit topping</a>
-        </p>
-    </li>
+    <div class="card mb-3">
+        <h4 class="card-header">
+        {{t.name|linebreaks}}
+        <small><a href="{% url 'pizzas:edit_topping' t.id %}">Edit topping</a></small>
+        </h4>
+    </div>
     {% empty %}
     
-    <li> no toppings for this yet.</li>
+    <p> no toppings for this yet.</p>
     
     {% endfor %}
 </ul>
@@ -24,9 +38,11 @@
 <ul>
 
     {% for comment in comments %}
-    <li>
-        <p> {{ comment.name|linebreaks }}</p>
-    </li>
+    <div class="card mb-6">
+        <h4 class="card-header">
+        {{ comment.name|linebreaks }}
+        </h4>
+    </div>
     {% empty %}
 
     <li>No comments for this pizza have been added yet.</li>

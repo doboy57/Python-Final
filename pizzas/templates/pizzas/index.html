@@ -1,6 +1,11 @@
 {% extends "pizzas/base.html" %}
-{% block content %}
-<p>
-    Ryan's Pizza the best pizza in Chernobyl !.  
-</p>
-{% endblock content %}
+{% block page_header %}
+<div class="jumbotron">
+<h1 class="display-3">Pizza so Good is radioactive.</h1>
+
+<p class="lead">Create your own custom pizzas add toppings and comments and view previous creations.</p>
+
+<a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">Register 
+&raquo;</a>
+</div>
+{% endblock page_header %}
