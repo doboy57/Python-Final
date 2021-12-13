@@ -4,14 +4,16 @@
     <h2>{{ pizza }}</h2>
 {% endblock page_header %}
 
-<body>
-    <div class="container-fluid">
-        <h3>Who Am I?</h3>
-        <img src="bird.jpg" alt="Bird">
-        <h3>I'm an adventurer</h3>
-      </div>
-</body>
 {% block content %}
+<p>
+    {% if pizza.header_image %}
+    <img class="img-responsive" src="{{ pizza.header_image.url }}">
+    {% endif %}
+    </br /><br />
+</p>
+
+
+
 
 {% block header %}
     <h4>{{ pizza}} toppings </h4>
@@ -19,11 +21,11 @@
 
 
     <ul>   
-    {% for t in toppings %}
+    {% for topping in toppings %}
     <div class="card mb-3">
         <h4 class="card-header">
-        {{t.name|linebreaks}}
-        <small><a href="{% url 'pizzas:edit_topping' t.id %}">Edit topping</a></small>
+        {{topping.name|linebreaks}}
+        <small><a href="{% url 'pizzas:edit_topping' topping.id %}">Edit topping</a></small>
         </h4>
     </div>
     {% empty %}
